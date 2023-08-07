@@ -32,6 +32,10 @@ const RegaloSchema = Schema({
     peluches:{
         type: String,
         require: true
+    },
+    mensaje:{
+        type: String,
+        require: true
     }
 
 })

@@ -12,7 +12,7 @@ const postRegalos = async (req,res) =>{
     const regalo = new Regalo(req.body);
     try {
         const nuevoRegalo = await regalo.save();
-        getDataCompra(regalo.correo);
+        getDataCompra(regalo);
         res.json(nuevoRegalo)
     } catch (error) {
         console.log(error);

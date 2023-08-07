@@ -13,11 +13,16 @@ export const obtenerRegalo = async () =>{
 
 export const newRegalo = async (data) =>{
     try {
-        await fetch(url,{
+        const response = await fetch(url,{
             method: "POST",
             body: JSON.stringify(data),
             headers: {'Content-Type':'application/json'}
         });
+        
+        const responseError = await response.json();
+        console.log(responseError.msg);
+
+
         window.location.href = "formulario.html"
     } catch (error) {
         console.log(error);

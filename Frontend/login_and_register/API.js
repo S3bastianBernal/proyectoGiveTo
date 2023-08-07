@@ -16,12 +16,17 @@ export const newRegister = async (data) =>{
 
 export const logUser = async (data) =>{
     try {
-        await fetch(urlLogin,{
+        const response = await fetch(urlLogin,{
             method: "POST",
             body: JSON.stringify(data),
             headers: {'Content-Type':'application/json'}
         });
-        window.location.href = "../inicio/index.html"
+
+        const responseError = await response.json();
+        alert(responseError.msg);
+        console.log("Bienvenido " + responseError.usuario.nombre + " su token es " + responseError.token);
+        window.location.href = '../inicio/index.html'
+
     } catch (error) {
         console.log(error);
     }

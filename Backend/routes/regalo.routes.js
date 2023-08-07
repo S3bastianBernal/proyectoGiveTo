@@ -10,6 +10,7 @@ const router = Router();
 router.get('/',getRegalos);
 
 router.post('/',[
+    check('correo', 'No un correo valido').isEmail(),
     validateDocuments
 ],postRegalos);
 

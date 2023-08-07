@@ -72,7 +72,7 @@ const getbill = (correo, res) => {
             table : {
                 data : [
                     {
-                        agradecimiento: "Gracias por crear una cuenta con nosotros y esperamos no se arrepienta, ya que queremos que vivas una experiencia gratificante para nosotros"
+                        agradecimiento: "Gracias por crear una cuenta con nosotros y Bienvenido, ya que queremos que vivas una experiencia gratificante para nosotros"
                     }
                 ]
             },
@@ -99,7 +99,7 @@ const getbill = (correo, res) => {
     // res.status(201).json("getBill Successfully...!");
 }
 
-const getDataCompra = (correo, res) => {
+const getDataCompra = (data) => {
 
     
 
@@ -123,12 +123,16 @@ const getDataCompra = (correo, res) => {
 
     let response = {
         body: {
-            name : "ADMIN",
-            intro: "Un cliente Realizo un pedido",
+            name : "Hola Sebas",
+            intro: `El cliente ${data.correo} Realizo un pedido`,
             table : {
                 data : [
                     {
-                        indicaciones: `has una revision a la peticion del cliente ${correo} y en base a eso has el mejor regalo posible y contactate con el si tienes alguna duda sobre la elaboracion del mismo`
+                        Dulces: `${data.dulces}`,
+                        Flores_Decoracion: `${data.flores}`,
+                        Peluches: `${data.peluches}`,
+                        Detalles: `${data.detalles}`,
+                        indicaciones: `${data.mensaje}`
                     }
                 ]
             },
@@ -139,7 +143,7 @@ const getDataCompra = (correo, res) => {
     let mail = MailGenerator.generate(response)
 
     let message = {
-        from : correo,
+        from : data.correo,
         to : process.env.EMAIL,
         subject: "Place Order",
         html: mail

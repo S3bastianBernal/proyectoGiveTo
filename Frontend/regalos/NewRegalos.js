@@ -1,6 +1,43 @@
-import { newRegalo, obtenerRegalo } from "./API.js";
+import { obtenerDecoraciones, obtenerDulces, obtenerObjectos } from "../tablas/API.js";
+import { newRegalo} from "./API.js";
+
+document.addEventListener('DOMContentLoaded',()=>{
+    llenadoSelect();
+})
+
+async function llenadoSelect() {
+    const dulces = await obtenerDulces();
+    const arrayDulces = dulces.dulces
+    const dulcesContainer = document.querySelector('#dulces');
+    arrayDulces.forEach((element) => {
+        const {tipoDulce,precio} = element
+        dulcesContainer.innerHTML += `
+        <option value="${tipoDulce}">${tipoDulce}--$${precio}</option>
+        `
+    });
+    const decoraciones = await obtenerDecoraciones();
+    const arrayDecoraciones = decoraciones.decoraciones
+    const decoracionesConatiner = document.querySelector('#flores');
+    console.log(arrayDecoraciones);
+    arrayDecoraciones.forEach((element) => {
+        const {tipoDecoracion,precio} = element
+        decoracionesConatiner.innerHTML += `
+        <option value="${tipoDecoracion}">${tipoDecoracion}--$${precio}</option>
+        `
+    });
+    const objectos = await obtenerObjectos();
+    const arrayObjectos = objectos.objectos
+    const objectosContainer = document.querySelector('#peluches');
+    console.log(arrayObjectos);
+    arrayObjectos.forEach((element) => {
+        const {tipoObjecto,precio} = element
+        objectosContainer.innerHTML += `
+        <option value="${tipoObjecto}">${tipoObjecto}--$${precio}</option>
+        `
+    });
 
 
+}
 
 
 
@@ -17,6 +54,7 @@ function agregarRegalo(e){
     const dulces = document.querySelector('#dulces').value;
     const flores = document.querySelector('#flores').value;
     const peluches = document.querySelector('#peluches').value;
+    const mensaje = document.querySelector('#mensaje').value;
 
     const data = {
         correo,
@@ -26,7 +64,8 @@ function agregarRegalo(e){
         receptor,
         dulces,
         flores,
-        peluches
+        peluches,
+        mensaje
     }
 
     if (validate(data)) {
