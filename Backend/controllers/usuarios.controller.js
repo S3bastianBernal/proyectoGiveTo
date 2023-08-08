@@ -1,6 +1,6 @@
 const Usuario = require('../models/Usuarios.js');
 const bcryptjs = require('bcryptjs');
-const { getbill } = require('./appController.js');
+const { bienvenida } = require('./appController.js');
 
 
 const getUsers = async (req,res)=>{
@@ -23,7 +23,7 @@ const postUser = async (req,res) =>{
 
     const salt = bcryptjs.genSaltSync();
     usuario.contraseña = bcryptjs.hashSync(contraseña,salt);
-    getbill(correo);
+    bienvenida(correo);
     await usuario.save();
 
     res.json({

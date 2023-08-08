@@ -4,7 +4,7 @@ const Usuario = require('../models/Usuarios.js');
 
 const validateJWT = async(req = request, res = response, next) =>{
 
-    const token = req.header('x-api-token-jwt');
+    const token = req.header('apiToken');
 
     if (!token) {
         return res.status(401).json({

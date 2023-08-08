@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-const { signup, getbill } = require('../controllers/appController.js')
+const { signup, bienvenida } = require('../controllers/appController.js')
 
 
 /** HTTP Reqeust */
 router.post('/user/signup', signup);
-router.post('/product/getbill', getbill);
+router.post('/product/getbill', bienvenida);
 
 
 module.exports = router;

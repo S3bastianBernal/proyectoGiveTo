@@ -24,7 +24,11 @@ export const logUser = async (data) =>{
 
         const responseError = await response.json();
         alert(responseError.msg);
+        
         console.log("Bienvenido " + responseError.usuario.nombre + " su token es " + responseError.token);
+        
+        localStorage.setItem('token', responseError.token)
+        
         window.location.href = '../inicio/index.html'
 
     } catch (error) {

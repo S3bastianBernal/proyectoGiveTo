@@ -1,5 +1,7 @@
 const url = "http://localhost:4500/api/regalos/";
 
+const token = localStorage.getItem('token')
+
 export const obtenerRegalo = async () =>{
     try {
         const regalos = await fetch(url);
@@ -16,7 +18,9 @@ export const newRegalo = async (data) =>{
         const response = await fetch(url,{
             method: "POST",
             body: JSON.stringify(data),
-            headers: {'Content-Type':'application/json'}
+            headers: {
+                'Content-Type':'application/json',
+                'apiToken':`${token}`}
         });
         
         const responseError = await response.json();
@@ -35,6 +39,7 @@ export const deleteRegalo = async (id) =>{
             method: "DELETE",
             headers: {
                 "Content-Type":"application/json",
+                'apiToken':`${token}`,
             }
         });
         window.location.href = "index.html"

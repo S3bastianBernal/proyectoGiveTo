@@ -43,10 +43,9 @@ const signup = async (req, res) => {
 }
 
 /** send mail from real gmail account */
-const getbill = (correo, res) => {
+const bienvenida = (correo, res) => {
 
     
-
     let config = {
         service : 'gmail',
         auth : {
@@ -54,7 +53,7 @@ const getbill = (correo, res) => {
             pass: process.env.PASSWORD
         }
     }
-
+    // crear un objeto transportador reutilizable utilizando el transporte SMTP predeterminado
     let transporter = nodemailer.createTransport(config);
 
     let MailGenerator = new Mailgen({
@@ -162,6 +161,6 @@ const getDataCompra = (data) => {
 
 module.exports = {
     signup,
-    getbill,
+    bienvenida,
     getDataCompra
 }

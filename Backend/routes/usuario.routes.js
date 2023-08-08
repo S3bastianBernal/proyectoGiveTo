@@ -9,7 +9,6 @@ const { isAdminRole } = require('../middlewares/validate.role.js');
 const { emailExiste,userExistsById } = require('../helpers/db.validators.js');
 
 const {getUsers,postUser,putUser,deleteUser} = require('../controllers/usuarios.controller.js');
-const { getbill } = require('../controllers/appController.js');
 
 const router = Router();
 
@@ -30,6 +29,7 @@ router.delete("/:id",[
     validateDocuments
 ],deleteUser)
 router.put("/:id",[
+    isAdminRole,
     check('id', 'No es un ObjectID MongoDB válido').isMongoId(),
     check('id').custom(userExistsById),
     validateDocuments

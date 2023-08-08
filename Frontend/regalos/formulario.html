@@ -13,16 +13,13 @@
         <input type ="checkbox" name ="" id ="chk1">
         <div class="logo"><img src="../img/logo.png" alt="" width="90px"></div>
             <div class="search-box">
-                <form>
-                    <input type ="text" name ="search" id ="srch" placeholder="Search">
-                    <button type ="submit"><i class="fa fa-search"></i></button>
-                </form>
+                
             </div>
             <ul>
                 <li><a href="../inicio/index.html">Inicio</a></li>
                 <li><a href="../regalos/index.html">Pedidos</a></li>
                 <li><a href="../tablas/index.html">Stock</a></li>
-                <li><a href="../login_and_register/index.html">Log Out</a></li>
+                <li><a class="logOut" href="../login_and_register/index.html">Log Out</a></li>
                 <li>
                     <a href="#"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -57,17 +54,17 @@
                 <input type="text" id="receptor" placeholder="Receptor">   
                 <br>
                 <label for="">Dulces</label>
-                <select name="dulces" id="dulces">
+                <select class="form-select" name="dulces" id="dulces">
                     <option value="Ninguno">Seleccione Dulces</option>
                 </select>
                 <br>
                 <label for="">Flores</label>
-                <select name="flores" id="flores">
+                <select class="form-select"  name="flores" id="flores">
                     <option value="Ninguno">Seleccione Flores</option>
                 </select>
                 <br>
                 <label for="">Peluches</label>
-                <select name="peluches" id="peluches">
+                <select class="form-select"  name="peluches" id="peluches">
                     <option value="Ninguno">Seleccione Peluches</option>
 
                 </select>
@@ -85,6 +82,7 @@
     </div>
 
     <script type="module" src="./NewRegalos.js"></script>
+    <script src="../js/script.js"></script>
     
 </body>
 </html>
